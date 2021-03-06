@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewsTable extends Migration
+class PendingNews extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('pending_news', function (Blueprint $table) {
             $table->id();
-            $table->string("title")->unique();
-            $table->text("body")->nullable();
-            $table->string("date")->nullable();
-            $table->string("name");
-            $table->string("img");
+            $table->string("link");
+            $table->string("link_hash");
+            $table->boolean('processed')->default(0);
+            $table->timestamp("scrap_timestamp");
+            $table->timestamp("processed_timestamp")->nullable();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        //
     }
 }
