@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -21,8 +23,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function news()
     {
-        return view('home');
+        $news = DB::select('SELECT * FROM news');
+         foreach($news as $new){
+             echo $new->title.'</br>';
+             echo '<img src='. $new->img. '>'.'</br>';
+         }
     }
 }

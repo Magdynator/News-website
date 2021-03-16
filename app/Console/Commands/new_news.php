@@ -7,7 +7,7 @@ use Goutte\Client;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class news extends Command
+class new_news extends Command
 {
     /**
      * The name and signature of the console command.
@@ -54,7 +54,6 @@ class news extends Command
             ->update(['processed' => 1, 'processed_timestamp' => Carbon::now()]);
             DB::insert('insert into news (title, body, date, name, img) values (?, ?, ?, ?, ?)',[$title, $body, $date, $name, $img]);
            
-            
         }
 
     }
