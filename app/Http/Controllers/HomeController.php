@@ -23,12 +23,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function news()
+    public function home()
     {
-        $news = DB::select('SELECT * FROM news');
-         foreach($news as $new){
-             echo $new->title.'</br>';
-             echo '<img src='. $new->img. '>'.'</br>';
-         }
+        
     }
 }
