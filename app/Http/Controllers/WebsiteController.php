@@ -8,20 +8,20 @@ use App\Models\news;
 
 class WebsiteController extends Controller
 {
-//     public function index(){
-//         $news = news::orderBy('id', 'ASC')->paginate(5);
-//         $names = news::orderBy('id', 'ASC')->paginate(5);
+    public function index(){
+        $news = news::orderBy('id', 'ASC')->paginate(5);
+        $names = news::orderBy('id', 'ASC')->paginate(5);
 
-//         return view('website.index', compact('news', 'names'));
-//     }
+        return view('website.index', compact('news', 'names'));
+    }
 
-//     public function news($id)
-//     {
-//         $news = news::where('id', $id)->first();
-//         if ($news) {
-//             return view('website.news', compact('news'));
-//         } else {
-//             return \Response::view('website.errors.404', array(), 404);
-//         }
-//     }
+    public function news($id)
+    {
+        $news = news::where('id', $id)->first();
+        if ($news) {
+            return view('website.news', compact('news'));
+        } else {
+            return \Response::view('website.errors.404', array(), 404);
+        }
+    }
 }

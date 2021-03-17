@@ -40,21 +40,21 @@ class new_news extends Command
      */
     public function handle()
     {
-    //     $client = new Client();
-    //     $news = DB::table('pending_news')->where('processed', 0)->pluck('link');
-    //     foreach ($news as $new_news){
-    //         $req = $client->request('GET', $new_news);
-    //         $title = $req->filter('.articleHeader > h1')->text();
-    //         $body = $req->filter('.articleCont > #articleBody')->text();
-    //         $date = $req->filter('.articleHeader > .newsStoryDate')->text();
-    //         $name = $req->filter('.articleCont > .writeBy')->text();
-    //         $img = $req->filter('.img-cont > .img-responsive')->attr('src');
-    //         DB::table('pending_news')
-    //         ->where('link', $new_news)
-    //         ->update(['processed' => 1, 'processed_timestamp' => Carbon::now()]);
-    //         DB::insert('insert into news (title, body, date, name, img) values (?, ?, ?, ?, ?)',[$title, $body, $date, $name, $img]);
+        $client = new Client();
+        $news = DB::table('pending_news')->where('processed', 0)->pluck('link');
+        foreach ($news as $new_news){
+            $req = $client->request('GET', $new_news);
+            $title = $req->filter('.articleHeader > h1')->text();
+            $body = $req->filter('.articleCont > #articleBody')->text();
+            $date = $req->filter('.articleHeader > .newsStoryDate')->text();
+            $name = $req->filter('.articleCont > .writeBy')->text();
+            $img = $req->filter('.img-cont > .img-responsive')->attr('src');
+            DB::table('pending_news')
+            ->where('link', $new_news)
+            ->update(['processed' => 1, 'processed_timestamp' => Carbon::now()]);
+            DB::insert('insert into news (title, body, date, name, img) values (?, ?, ?, ?, ?)',[$title, $body, $date, $name, $img]);
            
-    //     }
+        }
 
     }
 }

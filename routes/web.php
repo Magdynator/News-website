@@ -18,8 +18,8 @@ use App\Http\Controllers\WebsiteController;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/news', [WebsiteController::class, 'index']);
-// Route::get('post/{slug}', [WebsiteController::class, 'news']);
+Route::get('/news', [WebsiteController::class, 'index']);
+Route::get('post/{slug}', [WebsiteController::class, 'news']);
 
 Auth::routes();
 
