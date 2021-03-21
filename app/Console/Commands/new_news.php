@@ -52,9 +52,16 @@ class new_news extends Command
             DB::table('pending_news')
             ->where('link', $new_news)
             ->update(['processed' => 1, 'processed_timestamp' => Carbon::now()]);
-            DB::insert('insert into news (title, body, date, name, img) values (?, ?, ?, ?, ?)',[$title, $body, $date, $name, $img]);
+            $journalist = DB::table('journalist')->where('name',$name)->pluck('name');
+            if (count($journalist) == 0 or $name !== $journalist[0]){
+            DB::insert('insert into journalist (name) values (?)',[$name]);
+            }
+            $journalistId = DB::table('journalist')->where('name',$name)->pluck('id');
+            DB::insert('insert into news (title, body, date, journalist_id, img) values (?, ?, ?, ?, ?)',[$title, $body, $date, $journalistId[0], $img]);
+            }
+            
            
         }
 
     }
-}
+

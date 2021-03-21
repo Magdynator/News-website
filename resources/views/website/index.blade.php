@@ -22,7 +22,7 @@
       <div class="col-lg-8 col-md-8 mx-auto">
         @foreach($news as $new_news)
         <div class="post-preview">
-          <a href="{{ url('news/'. $new_news->id) }}">
+          <a href="{{ url('onenews/'. $new_news->id) }}">
             <h2 class="post-title">
             {{ $new_news-> title }}
             </h2>
@@ -49,7 +49,7 @@
           @foreach($names as $name)
 
           <ul class = "news-list">
-            <li><a href="">{{ $name->name}}</a></li>
+            <li><a href="{{ url('news/'. $name->id) }}">{{ $name->name}}</a></li>
           </ul>
           @endforeach
 

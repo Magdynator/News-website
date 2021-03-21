@@ -18,9 +18,10 @@ class CreateNewsTable extends Migration
             $table->string("title")->unique();
             $table->text("body")->nullable();
             $table->string("date")->nullable();
-            $table->string("name");
+            $table->unsignedInteger('journalist_id');
             $table->string("img");
-        });
+            
+        }); 
     }
 
     /**

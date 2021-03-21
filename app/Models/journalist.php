@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class news extends Model
+class journalist extends Model
 {
     use HasFactory;
-    protected $fillable =['title', 'body', 'date', 'journalist_id', 'img'];
-
+    protected $fillable = ['name'];
 }

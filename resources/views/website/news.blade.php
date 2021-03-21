@@ -9,7 +9,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="post-heading">
                         <h1>{{ $news->title }}</h1>
-                        <h2 class="subheading">{{ $news->name }}</h2>
+                        <h2 class="subheading">{{ $names }}</h2>
                         <span class="meta">
                  {{ $news->date }}</span>
                     </div>
