@@ -41,9 +41,11 @@ class pending_news extends Command
     public function handle()
     {
         $client = new Client();
-        $page = $client->request('GET','https://www.youm7.com/Section/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9/298/1');
+        $x = 1;
+        while($x < 101){
+        $page = $client->request('GET','https://www.youm7.com/Section/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D8%A9/298/'.$x);
         $i =0;
-        while ($i <10){
+        while ($i <40){
             $url = $page->filter('.col-xs-12 > div > h3> a')->eq($i)->link()->getUri();
             $hash_url = md5($url);
             $links_hash = DB::table('pending_news')->where('link_hash',$hash_url)->pluck('link_hash');
@@ -54,5 +56,7 @@ class pending_news extends Command
             }
             $i = $i + 1;
         }
+        $x = $x +1;
     }
+}
 }

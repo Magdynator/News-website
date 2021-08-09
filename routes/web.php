@@ -15,10 +15,8 @@ use App\Http\Controllers\WebsiteController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/news', [WebsiteController::class, 'index']);
+
+Route::get('/', [WebsiteController::class, 'index']);
 Route::get('/news/{id}', [WebsiteController::class, 'journalist']);
 Route::get('/onenews/{id}', [WebsiteController::class, 'news']);
 
