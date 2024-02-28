@@ -4,8 +4,6 @@
    A website that scraps the sport news from [Youm7.com](Youm7.com)</br>
    This website was made for educational purposes and you shouldn’t use it for business purposes without getting the approval of [Youm7.com](Youm7.com)
    made by laravel 8
-## Demo
-[Click here](https://news-website21.herokuapp.com/)
 
 ## Sceenshots
 1-
